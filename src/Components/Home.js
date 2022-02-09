@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import './Home.css';
 
 function Home () {
 
-    let [currWord, setCurrWord] = useState("Favor ");
+    let [currWord, setCurrWord] = useState("FAVOR ");
     let [wordLength, setWordLength] = useState(5);
+    let [userAnswer, setUserAnswer] = useState("");
+    let [validateAnswer, setValidateAnswer] = useState(null);
 
     const decrease = () => {
         if (wordLength > 4)
@@ -40,28 +43,48 @@ function Home () {
             {
                 wordNum++;
             }
-            setCurrWord(response.data[wordNum]);
+            setCurrWord(response.data[wordNum].toUpperCase() + " ");
             //console.log(wordNum);
 
         }
         getWord();
     }
 
+    let checkWord = () => {
+    }
+
+    const handleInput = (event) => {
+        setUserAnswer(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(userAnswer);
+    }
+
 
     return (
-        <div className = "home"> 
-            {currWord }
-            Length = {wordLength}
-            <button onClick = {increase}>
-                Increase Length
-            </button>
-            <button onClick = {decrease}>
-                Decrease Length
-            </button>
-            <button onClick = {fetchWord}>
-                Get New Word
-            </button>
+        <div className = "clone-home">
+            <div className = "controls"> 
+                {currWord }
+                Length = {wordLength}
+                <button onClick = {increase}>
+                    Increase Length
+                </button>
+                <button onClick = {decrease}>
+                    Decrease Length
+                </button>
+                <button onClick = {fetchWord}>
+                    Get New Word
+                </button>
+            </div>
+            <form onSubmit = {handleSubmit} className = "guessbox">
+                <input type = "text" autoComplete = "off" value = {userAnswer} onChange = {handleInput} maxLength = {wordLength} id = "text"/>
+                <button type = "submit" onSubmit = {() => handleSubmit} className = "submit">Submit</button>
+            </form>
+            
         </div>
+        
     );
     
 }

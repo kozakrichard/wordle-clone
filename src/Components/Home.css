@@ -1,0 +1,28 @@
+.guessbox {
+    padding-left: 10%;
+    width: 350px;
+    z-index: 0;
+    padding-right: 25%;
+    margin: 0;
+}
+
+#text {
+    background-image: url("http://3.bp.blogspot.com/-4oAWWCcNNz4/Tjr3nKNyVUI/AAAAAAAAPLU/Pouua-pNsEY/s1600/sq.gif");    
+    width: 460px;
+    height: 43px;
+    background-size: 45px;
+    border: none;
+    font-family: monospace;
+    font-size: 15px;
+    padding-left: 17px;
+    letter-spacing: 36px;
+    z-index: 0;
+}
+
+.submit {
+    width:25%;
+    height:50%;
+    margin-left: 140%;
+    z-index: 2;
+    margin-top: -10%;
+}
